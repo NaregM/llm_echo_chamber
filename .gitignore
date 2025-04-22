@@ -1,0 +1,16 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore environment config
+.env
+
+# Ignore model checkpoints
+*.pt
+*.pth
+
+# Ignore OS junk
+.DS_Store
+
+# Ignore output GIFs or logs
+logs/

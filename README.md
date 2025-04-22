@@ -4,5 +4,5 @@ introduce a novel metric: the mean pairwise Jensen–Shannon divergence, $\tau$,
 outputs.
 
 $$
-\tau \equiv \frac{1}{Q \binom{N}{2}}\sum_{q=1}^{Q} \sum_{1 \leq i < k \leq N} \text{JSD}\left( \mathrm{P}_i^{(q)} \|\| \mathrm{P}_k^{(q)} \right).
+\tau \equiv \frac{1}{Q \binom{N}{2}}\sum_{q=1}^{Q} \sum_{1 \leq i < k \leq N} \text{JSD}\left( \mathrm{P}_i^{(q)} \mid\mid \mathrm{P}_k^{(q)} \right).
 $$

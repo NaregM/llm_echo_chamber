@@ -7,5 +7,5 @@ $$
 \tau \equiv \frac{1}{Q \binom{N}{2}} 
 \sum_{q=1}^{Q} 
 \sum_{1 \leq i < k \leq N} 
-\text{JSD}\left( \mathcal{P}_i^{(q)} \,\|\, \mathcal{P}_k^{(q)} \right).
+\text{JSD}\left( \mathrm{P}_i^{(q)} \,\|\, \mathrm{P}_k^{(q)} \right).
 $$

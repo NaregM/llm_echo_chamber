@@ -1,13 +1,7 @@
 import numpy as np
 from agent import prompt, parser, llm_response
-
+from llm_models import models
 from questions import questions
-
-models = {'gemini': llm_gemini,
-                'haiku': llm_haiku,
-                'xAI': llm_x,
-                'sonnet': llm_sonnet,
-                'gpt-4o': llm_gpt4o}
 
 llm_resps = {}
 

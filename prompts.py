@@ -1,4 +1,5 @@
-Q_PROMPT = """You are the best AI assistant out there and you are very knowledgeable.
+QuestionPrompt = """
+You are the best AI assistant out there and you are very knowledgeable.
 Answer the following question in 4-5 sentences:
 {question}
 

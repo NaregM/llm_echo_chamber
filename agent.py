@@ -17,7 +17,10 @@ import os
 import re
 import pickle
 
-from prompts import Q_PROMPT
+from prompts import QuestionPrompt
+
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 
 class QuestionModel(BaseModel):
@@ -34,7 +37,7 @@ class QuestionModel(BaseModel):
 parser = PydanticOutputParser(pydantic_object=QuestionModel)
 
 prompt = PromptTemplate(
-    template=Q_PROMPT,
+    template=QuestionPrompt,
     input_variables=["question"],
     partial_variables={"format_instructions": parser.get_format_instructions()},
 )

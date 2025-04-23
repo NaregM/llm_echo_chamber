@@ -11,7 +11,7 @@ where
 $$
 \tau_q = D_{\text{pairwise}}^{(q)} = \frac{1}{\binom{N}{2}} 
 \sum_{1 \leq i < k \leq N} 
-\text{JSD}\left( P_i^{(q)} \,\|\, P_k^{(q)} \right).
+\text{JSD}\left( P_i^{(q)} \mid \mid P_k^{(q)} \right).
 $$
 
 Here, $P_i^{(q)}$ denotes the token cluster probability distribution for model $i$ responding to question $q$.

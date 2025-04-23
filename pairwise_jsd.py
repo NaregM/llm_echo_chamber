@@ -11,7 +11,7 @@ from itertools import combinations
 from scipy.stats import entropy
 from sklearn.cluster import KMeans
 
-from helpers import tokenize, get_token_embedding
+from helpers import tokenize, get_token_embedding, prepare_tokens
 
 # -----------------------------------------------------------------
 # -----------------------------------------------------------------
@@ -63,4 +63,37 @@ def jensen_shannon_divergence_dict(dist_p, dist_q, base=2):
     m = 0.5 * (p + q)
     return 0.5 * entropy(p, m, base=base) + 0.5 * entropy(q, m, base=base)
 
+def compute_tau_q(
+    responses_by_llm,
+    questions):
+    """
+    Compute average pairwise JSD (tau) and std deviation per question.
+    Returns two lists: mean JSD (tau) and std JSD per question.
+    """
+    tau_values = []
+    std_values = []
     
+    unique_tokens = prepare_tokens(responses_by_llm, questions)
+    n_clusters = len(unique_tokens)//20
+    token_to_cluster = cluster_tokens(unique_tokens,
+                                  n_clusters=n_clusters)
+    llm_names = list(responses_by_llm.keys())
+    num_questions = len(questions)
+    
+    for q_idx in range(num_questions):
+        question_responses = [responses_by_llm[llm][q_idx]['llm_answer'] for llm in llm_names]
+        distributions = [
+            get_cluster_prob_distribution(response, token_to_cluster)
+            for response in question_responses
+        ]
+        
+        jsd_pairs = [
+            jensen_shannon_divergence_dict(distributions[i], distributions[j])
+            for i, j in combinations(range(len(distributions)), 2)
+        ]
+        tau_q = np.mean(jsd_pairs)
+        std_q = np.std(jsd_pairs)
+        tau_values.append(tau_q)
+        std_values.append(std_q)
+    
+    return tau_values, std_values

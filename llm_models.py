@@ -1,11 +1,11 @@
 from langchain_community.llms import OpenAI
-from langchain_community.chat_models import ChatOpenAI
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain.output_parsers import ResponseSchema, StructuredOutputParser
 from langchain.output_parsers import PydanticOutputParser
 from langchain_xai import ChatXAI
 from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 
 
 from dotenv import load_dotenv
@@ -16,8 +16,6 @@ load_dotenv(dotenv_path='/home/nareg/Desktop/paper_idea/llm_echo_chamber/.env')
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 openai_api_key = os.getenv("OPENAI_API_KEY")
 x_api_key = os.getenv("X_API_KEY")
-
-print('===>>>', x_api_key)
 
 # --------------------------------------------------------------------
 # --------------------------------------------------------------------

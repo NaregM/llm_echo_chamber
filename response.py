@@ -29,7 +29,7 @@ def llm_response(model: BaseLanguageModel, questions: Dict[str, str]) -> List[Di
     qs = list(questions.values())[0]
     
     for question in qs:
-
+        
         response_obj = LLMResponse(question=question,
                                    llm_answer=llm_chian(model, question,
                                                    prompt, parser).llm_answer,

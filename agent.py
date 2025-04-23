@@ -43,7 +43,8 @@ prompt = PromptTemplate(
 )
 
 
-def llm_response(llm_model, question, prompt, parser):
+def llm_chian(llm_model, question, prompt, parser):
+    
     """
     """
     chain = prompt | llm_model | parser

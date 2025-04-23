@@ -14,6 +14,7 @@ import os
 load_dotenv()
 
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # --------------------------------------------------------------------
 # --------------------------------------------------------------------
@@ -22,7 +23,6 @@ anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 llm_gemini = None
 llm_haiku = None
 llm_x = None
-llm_gpt4o = None
 
 llm_sonnet = ChatAnthropic(
     model="claude-3-7-sonnet-latest",
@@ -32,6 +32,10 @@ llm_sonnet = ChatAnthropic(
     max_retries=2,
     api_key = anthropic_api_key
 )
+
+llm_gpt4o = ChatOpenAI(openai_api_key = openai_api_key,
+                temperature = 0.0,
+                model = 'gpt-4o')
 
 models = {'gemini': llm_gemini,
                 'haiku': llm_haiku,

@@ -7,9 +7,6 @@ import pickle
 
 if __name__ == "__main__":
     
-    #for name, model in tqdm(models.items()):
-    #    response = llm_response(model, questions2)
-    #    save_model_response(name, response)
     with open("/home/nareg/Desktop/paper_idea/llm_echo_chamber/results/gpt-4o_response.pkl", "rb") as f:
         gpt_res = pickle.load(f)
         
@@ -23,11 +20,10 @@ if __name__ == "__main__":
         x_res = pickle.load(f)
         
     responses_by_llm = {'gpt4o': gpt_res,
-                    'sonnet': sonnet_res,
-                    'haiku': haiku_res,
-                    'xAI': x_res}
+                        'sonnet': sonnet_res,
+                        'haiku': haiku_res,
+                        'xAI': x_res}
     
     qs = list(questions2.values())[0]
-    print(qs)
     
     print(f'tau_q: {compute_tau_q(responses_by_llm, qs)}')
